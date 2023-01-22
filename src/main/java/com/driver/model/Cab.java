@@ -1,9 +1,9 @@
-
 package com.driver.model;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "cabs")
 public class Cab {
 
     @Id
@@ -14,9 +14,13 @@ public class Cab {
 
     private boolean available;
 
-    public Cab(int perKmRate, boolean available) {
+    @OneToOne
+    @JoinColumn
+    private Driver driver;
+
+    public Cab(int perKmRate) {
         this.perKmRate = perKmRate;
-        this.available = available;
+        this.available = true;
     }
 
     public Cab() {
@@ -38,11 +42,21 @@ public class Cab {
         this.perKmRate = perKmRate;
     }
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+
 }

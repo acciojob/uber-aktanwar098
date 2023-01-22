@@ -3,12 +3,15 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "admin")
 public class Admin {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int adminId;
-    private  String username;
+
+    private String username;
+
     private String password;
 
     public Admin(String username, String password) {
